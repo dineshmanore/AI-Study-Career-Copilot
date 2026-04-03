@@ -13,7 +13,14 @@ export default function Settings() {
 
   useEffect(() => {
     localStorage.setItem('ascc_theme', theme);
-    // Apply theme logic here or in a provider
+    document.documentElement.style.filter = '';
+    document.documentElement.style.backgroundColor = '';
+    
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, [theme]);
 
   useEffect(() => {

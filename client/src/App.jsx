@@ -23,8 +23,21 @@ function ProtectedLayout({ children }) {
   );
 }
 
+import { useEffect } from 'react';
+
 export default function App() {
   const { user, loading } = useAuth();
+
+  useEffect(() => {
+    const theme = localStorage.getItem('ascc_theme') || 'system';
+    document.documentElement.style.filter = '';
+    document.documentElement.style.backgroundColor = '';
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   if (loading) {
     return (

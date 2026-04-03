@@ -71,3 +71,64 @@ body {
 .markdown-render h3 { font-size: 0.95rem; font-weight: 700; color: #1E3A5F; margin-top: 1rem; margin-bottom: 0.3rem; }
 .markdown-render p  { font-size: 0.875rem; line-height: 1.7; margin-bottom: 0.5rem; }
 .markdown-render strong { font-weight: 700; color: #1E3A5F; }
+
+/* ── Premium Semantic Dark Mode Overrides ── */
+html.dark body {
+  background-color: #000000 !important;
+  color: #ededed !important;
+}
+
+/* Base App Backgrounds to Black */
+html.dark [class*="bg-surface-container-low"], 
+html.dark [class*="bg-surface"] {
+  background-color: #000000 !important;
+}
+
+/* Cards & Elevated Containers */
+html.dark [class*="bg-white"], 
+html.dark [class*="bg-surface-container-lowest"] {
+  background-color: #111111 !important;
+  border-color: #27272a !important;
+}
+
+/* Secondary Containers */
+html.dark [class*="bg-surface-container-high"] {
+  background-color: #1a1a1a !important;
+}
+
+/* Sidebar Override (clashes if it remains blue) */
+html.dark .bg-\[\#1E3A5F\] {
+  background-color: #000000 !important;
+  border-right: 1px solid #27272a !important;
+}
+
+/* Text Colors */
+html.dark [class*="text-on-surface"], 
+html.dark [class*="text-navy"], 
+html.dark [class*="text-text-primary"] {
+  color: #ededed !important;
+}
+html.dark [class*="text-on-surface-variant"], 
+html.dark [class*="text-text-secondary"],
+html.dark .text-slate-400,
+html.dark .text-slate-300 {
+  color: #a1a1aa !important;
+}
+
+/* Borders */
+html.dark [class*="border-outline-variant"], 
+html.dark [class*="border-border"],
+html.dark .border-white\/10 {
+  border-color: #27272a !important;
+}
+
+/* Specific component tweaks */
+html.dark .markdown-render h1, 
+html.dark .markdown-render h2, 
+html.dark .markdown-render h3, 
+html.dark .markdown-render strong {
+  color: #ededed;
+}
+html.dark .markdown-render h1 {
+  border-color: #27272a;
+}
