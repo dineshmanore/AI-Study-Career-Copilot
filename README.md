@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Scholarly Edge Banner](./screenshots/dashboard_desktop_1775226000626.png)
+![Scholarly Edge Banner](screenshots/dashboard_desktop_1775226000626.png)
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://ai-study-career-copilot.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/dineshmanore/AI-Study-Career-Copilot)
@@ -44,31 +44,31 @@
 <summary><b>Click to expand all screenshots</b></summary>
 
 ### Dashboard
-![Dashboard](./screenshots/dashboard_desktop_1775226000626.png)
+![Dashboard](screenshots/dashboard_desktop_1775226000626.png)
 
 ### Task Manager
-![Task Manager](./screenshots/tasks_modal_desktop_1775226032789.png)
+![Task Manager](screenshots/tasks_modal_desktop_1775226032789.png)
 
 ### AI Study Planner
-![Study Planner](./screenshots/study_plan_desktop_1775226749796.png)
+![Study Planner](screenshots/study_plan_desktop_1775226749796.png)
 
 ### Notes Hub
-![Notes](./screenshots/notes_desktop_1775226768536.png)
+![Notes](screenshots/notes_desktop_1775226768536.png)
 
 ### Ask AI (Chat)
-![Ask AI](./screenshots/ask_ai_desktop_1775227209298.png)
+![Ask AI](screenshots/ask_ai_desktop_1775227209298.png)
 
 ### Resume Builder
-![Resume](./screenshots/resume_desktop_1775226771821.png)
+![Resume](screenshots/resume_desktop_1775226771821.png)
 
 ### Interview Simulator
-![Interview](./screenshots/interview_desktop_1775227222163.png)
+![Interview](screenshots/interview_desktop_1775227222163.png)
 
 ### Profile
-![Profile](./screenshots/profile_desktop_1775226045300.png)
+![Profile](screenshots/profile_desktop_1775226045300.png)
 
 ### Settings
-![Settings](./screenshots/settings_ai_desktop_1775226066767.png)
+![Settings](screenshots/settings_ai_desktop_1775226066767.png)
 
 </details>
 
