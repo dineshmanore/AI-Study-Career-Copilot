@@ -30,11 +30,11 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-surface-container-low p-4 font-body">
       <div className="w-full max-w-md animate-fade-in">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-24 h-24 rounded-[2.5rem] bg-gradient-to-br from-primary to-primary-container shadow-2xl shadow-primary/25 mb-6 overflow-hidden">
+          <div className="flex justify-center mb-6">
             <img 
               src="/logo.png" 
               alt="Scholarly Edge Logo" 
-              className="w-full h-full object-cover p-1"
+              className="w-32 h-32 object-contain font-black uppercase tracking-tight"
             />
           </div>
           <h1 className="font-headline text-4xl font-extrabold text-on-surface tracking-tight">Scholarly Edge</h1>
