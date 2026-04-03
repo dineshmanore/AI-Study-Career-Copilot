@@ -48,8 +48,8 @@ export default function Dashboard() {
       {/* ── Welcome Header ── */}
       <section className="flex flex-wrap justify-between items-end gap-4">
         <div>
-          <h1 className="font-headline text-3xl md:text-4xl font-extrabold text-on-surface tracking-tight">
-            {greeting}, {user?.name?.split(' ')[0]} 👋
+          <h1 className="font-headline text-3xl md:text-4xl font-extrabold text-on-surface tracking-tight leading-tight">
+            {greeting}, {user ? user.name.split(' ')[0] : 'Scholar'} 👋
           </h1>
           <p className="text-on-surface-variant mt-2 text-base">
             Your intellectual atelier is ready for today's breakthroughs.

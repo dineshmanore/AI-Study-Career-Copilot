@@ -98,22 +98,34 @@ export default function Layout({ children }) {
             Settings
           </NavLink>
           {/* User row */}
-          <div className="flex items-center gap-3 px-4 py-2 mt-1">
-            <div className="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-              {avatarInitial}
+          {user ? (
+            <div className="flex items-center gap-3 px-4 py-2 mt-1">
+              <div className="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                {avatarInitial}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-xs font-semibold truncate">{user.name}</p>
+                <p className="text-slate-400 text-[10px] truncate">{user.email}</p>
+              </div>
+              <button
+                onClick={handleLogout}
+                title="Sign Out"
+                className="text-slate-400 hover:text-red-400 transition-colors"
+              >
+                <span className="material-symbols-outlined text-[1.1rem]">logout</span>
+              </button>
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-white text-xs font-semibold truncate">{user?.name}</p>
-              <p className="text-slate-400 text-[10px] truncate">{user?.email}</p>
+          ) : (
+            <div className="flex items-center gap-3 px-4 py-2 mt-1">
+              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/40 font-bold text-sm flex-shrink-0">
+                ?
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-xs font-semibold truncate">Guest Scholar</p>
+                <Link to="/login" className="text-primary text-[10px] font-bold hover:underline">Sign in to sync</Link>
+              </div>
             </div>
-            <button
-              onClick={handleLogout}
-              title="Sign Out"
-              className="text-slate-400 hover:text-red-400 transition-colors"
-            >
-              <span className="material-symbols-outlined text-[1.1rem]">logout</span>
-            </button>
-          </div>
+          )}
         </div>
       </aside>
 
@@ -157,11 +169,11 @@ export default function Layout({ children }) {
             {/* User avatar */}
             <div className="flex items-center gap-2">
               <div className="hidden sm:block text-right">
-                <p className="text-xs font-bold text-on-surface">{user?.name?.split(' ')[0]}</p>
-                <p className="text-[10px] text-on-surface-variant">Scholar</p>
+                <p className="text-xs font-bold text-on-surface">{user ? user.name.split(' ')[0] : 'Guest'}</p>
+                <p className="text-[10px] text-on-surface-variant">{user ? 'Premium Scholar' : 'Scholar View'}</p>
               </div>
               <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm border-2 border-primary/20">
-                {avatarInitial}
+                {user ? avatarInitial : '?'}
               </div>
             </div>
           </div>
