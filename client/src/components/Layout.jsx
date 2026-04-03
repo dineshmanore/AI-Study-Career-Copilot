@@ -142,10 +142,10 @@ export default function Layout({ children }) {
           </button>
 
           {/* Search */}
-          <div className="relative flex-1 max-w-xl">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[1.1rem]">search</span>
+          <div className="relative flex-1 max-w-xl hidden md:block group">
+            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[1.1rem] transition-colors group-hover:text-primary">search</span>
             <input
-              className="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+              className="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant/10 rounded-2xl text-sm focus:ring-2 focus:ring-primary/10 transition-all outline-none focus:bg-white focus:shadow-lg focus:shadow-primary/5"
               placeholder="Search tasks, notes, or ask AI..."
               type="text"
             />
@@ -166,16 +166,20 @@ export default function Layout({ children }) {
               <span className="material-symbols-outlined text-[1rem]" style={{ fontVariationSettings: "'FILL' 1" }}>smart_toy</span>
               Ask AI
             </Link>
-            {/* User avatar */}
-            <div className="flex items-center gap-2">
+            {/* User Access */}
+            <Link
+              to="/profile"
+              className="flex items-center gap-3 p-1.5 rounded-2xl hover:bg-surface-container transition-all group border border-transparent hover:border-outline-variant/20 hover:shadow-sm active:scale-95"
+              title="Identity & Security"
+            >
               <div className="hidden sm:block text-right">
-                <p className="text-xs font-bold text-on-surface">{user ? user.name.split(' ')[0] : 'Guest'}</p>
-                <p className="text-[10px] text-on-surface-variant">{user ? 'Premium Scholar' : 'Scholar View'}</p>
+                <p className="text-xs font-black text-on-surface tracking-tight leading-none group-hover:text-primary transition-colors">{user ? user.name.split(' ')[0] : 'Guest'}</p>
+                <p className="text-[9px] font-black text-primary/40 uppercase tracking-widest mt-0.5">{user ? 'Premium' : 'Scholar'}</p>
               </div>
-              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm border-2 border-primary/20">
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-black text-sm border-2 border-primary/10 group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-300">
                 {user ? avatarInitial : '?'}
               </div>
-            </div>
+            </Link>
           </div>
         </header>
 

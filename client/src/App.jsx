@@ -12,6 +12,7 @@ import Chat from './pages/Chat';
 import Resume from './pages/Resume';
 import Interview from './pages/Interview';
 import Settings from './pages/Settings';
+import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 
 function ProtectedLayout({ children }) {
@@ -52,6 +53,7 @@ export default function App() {
       <Route path="/resume" element={<ProtectedLayout><Resume /></ProtectedLayout>} />
       <Route path="/interview" element={<ProtectedLayout><Interview /></ProtectedLayout>} />
       <Route path="/settings" element={<ProtectedLayout><Settings /></ProtectedLayout>} />
+      <Route path="/profile" element={<ProtectedLayout><Profile /></ProtectedLayout>} />
 
       {/* Redirects */}
       <Route path="/" element={<Navigate to="/dashboard" />} />

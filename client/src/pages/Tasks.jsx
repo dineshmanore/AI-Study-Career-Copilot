@@ -161,7 +161,7 @@ export default function Tasks() {
   return (
     <div className="animate-fade-in space-y-8 pb-10">
       {/* Header */}
-      <div className="flex flex-wrap justify-between items-end gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
           <h1 className="font-headline text-3xl font-extrabold text-on-surface tracking-tight flex items-center gap-3">
             <span className="material-symbols-outlined text-primary text-3xl">task_alt</span>
@@ -253,7 +253,7 @@ export default function Tasks() {
       {/* Modal */}
       {modal && (
         <div className="fixed inset-0 bg-navy/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in" onClick={() => setModal(false)}>
-          <div className="bg-white/90 backdrop-blur-2xl rounded-[2.5rem] w-full max-w-lg p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)] border border-white/50 relative max-h-[92vh] overflow-y-auto custom-scrollbar animate-scale-in" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white rounded-[2.5rem] w-full max-w-lg p-6 md:p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)] border border-outline-variant/10 relative max-h-[92vh] overflow-y-auto custom-scrollbar animate-scale-in" onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setModal(false)} className="absolute top-8 right-8 w-11 h-11 flex items-center justify-center bg-surface-container/50 hover:bg-primary hover:text-white rounded-2xl transition-all duration-300 hover:rotate-90 active:scale-90 group shadow-sm">
               <span className="material-symbols-outlined text-on-surface-variant group-hover:text-white transition-colors">close</span>
             </button>
@@ -263,7 +263,7 @@ export default function Tasks() {
                 <span className="h-1.5 w-10 bg-primary rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]" />
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70">Intelligence Module</span>
               </div>
-              <h3 className="font-headline text-3xl font-black text-on-surface tracking-tight leading-[1.1]">{editingTask ? 'Refine Initiative' : 'Initialize Strategic Task'}</h3>
+              <h3 className="font-headline text-2xl md:text-3xl font-black text-on-surface tracking-tight leading-[1.1]">{editingTask ? 'Refine Initiative' : 'Initialize Strategic Task'}</h3>
               <p className="text-on-surface-variant/70 text-sm font-medium mt-2 leading-relaxed">Shape the trajectory of your current project with precision.</p>
             </div>
 
@@ -274,7 +274,7 @@ export default function Tasks() {
                   <span className="text-[10px] font-bold text-primary/40">Core Parameter</span>
                 </div>
                 <input value={form.title} onChange={(e) => setForm({...form, title: e.target.value})}
-                  className="w-full px-6 py-4.5 bg-surface-container-low/50 border border-outline-variant/10 rounded-2xl focus:ring-2 focus:ring-primary/10 transition-all outline-none text-sm font-bold placeholder:opacity-20 hover:shadow-md hover:shadow-primary/5 focus:bg-white focus:shadow-xl focus:shadow-primary/5 border-b-2 focus:border-b-primary" maxLength={100} placeholder="Define the primary objective..." />
+                  className="w-full px-6 py-4.5 bg-surface-container-low border border-outline-variant/15 rounded-2xl focus:ring-4 focus:ring-primary/5 transition-all outline-none text-sm font-bold placeholder:text-on-surface-variant/50 focus:bg-white focus:shadow-xl focus:shadow-primary/5 border-b-2 focus:border-b-primary" maxLength={100} placeholder="Define the primary objective..." />
               </div>
               
               <div className="space-y-3">
@@ -282,10 +282,10 @@ export default function Tasks() {
                   <label className="text-[11px] font-black text-on-surface/40 uppercase tracking-[0.1em]">Substance & Context</label>
                 </div>
                 <textarea value={form.description} onChange={(e) => setForm({...form, description: e.target.value})}
-                  className="w-full px-6 py-5 bg-surface-container-low/50 border border-outline-variant/10 rounded-[1.5rem] focus:ring-2 focus:ring-primary/10 transition-all outline-none resize-none text-sm font-semibold h-32 placeholder:opacity-20 hover:shadow-md hover:shadow-primary/5 focus:bg-white focus:shadow-xl focus:shadow-primary/5 border-b-2 focus:border-b-primary" maxLength={500} placeholder="Detail the necessary steps and variables involved..." />
+                  className="w-full px-6 py-5 bg-surface-container-low border border-outline-variant/15 rounded-[1.5rem] focus:ring-4 focus:ring-primary/5 transition-all outline-none resize-none text-sm font-semibold h-32 placeholder:text-on-surface-variant/50 focus:bg-white focus:shadow-xl focus:shadow-primary/5 border-b-2 focus:border-b-primary" maxLength={500} placeholder="Detail the necessary steps and variables involved..." />
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <label className="text-[11px] font-black text-on-surface/40 uppercase tracking-[0.1em] ml-1">Target Epoch</label>
                   <div className="relative">
