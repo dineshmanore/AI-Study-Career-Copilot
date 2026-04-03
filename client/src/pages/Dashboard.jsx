@@ -12,9 +12,9 @@ const statCards = [
 ];
 
 const quickActions = [
-  { to: '/tasks',       icon: 'add_circle',            label: '+ New Task',      style: 'hover:bg-primary hover:text-white border border-outline-variant/10' },
-  { to: '/study-plan',  icon: 'auto_awesome_motion',   label: 'Generate Plan',   style: 'hover:bg-primary hover:text-white border border-outline-variant/10' },
-  { to: '/notes',       icon: 'summarize',             label: 'Summarize',       style: 'hover:bg-primary hover:text-white border border-outline-variant/10' },
+  { to: '/tasks',       icon: 'add_circle',            label: '+ New Task',      style: 'bg-surface-container-lowest hover:bg-primary hover:text-white border border-outline-variant/10' },
+  { to: '/study-plan',  icon: 'auto_awesome_motion',   label: 'Generate Plan',   style: 'bg-surface-container-lowest hover:bg-primary hover:text-white border border-outline-variant/10' },
+  { to: '/notes',       icon: 'summarize',             label: 'Summarize',       style: 'bg-surface-container-lowest hover:bg-primary hover:text-white border border-outline-variant/10' },
   { to: '/ask',         icon: 'smart_toy',             label: 'Ask AI Copilot',  style: 'bg-primary text-white shadow-lg shadow-primary/20', filled: true },
 ];
 
@@ -102,7 +102,7 @@ export default function Dashboard() {
                 <Link
                   key={action.to}
                   to={action.to}
-                  className={`flex flex-col items-center justify-center p-4 bg-surface-container-lowest rounded-2xl transition-all group ${action.style}`}
+                  className={`flex flex-col items-center justify-center p-4 rounded-2xl transition-all group ${action.style}`}
                 >
                   <span
                     className="material-symbols-outlined mb-2 group-hover:scale-125 transition-transform"

@@ -6,6 +6,7 @@ const StudyPlan = require('../models/StudyPlan');
 const Note      = require('../models/Note');
 const Chat      = require('../models/Chat');
 const Resume    = require('../models/Resume');
+const Task      = require('../models/Task');
 
 // Model Config (Free Qwen - stable)
 const FAST_MODEL = 'qwen/qwen3.6-plus:free';
@@ -73,6 +74,27 @@ Format using Markdown:
       userId: req.user.userId,
       subject, examDate, dailyHours, knowledgeLevel, generatedPlan,
     });
+
+    // ─── Extract and create tasks ───
+    try {
+      const taskLines = generatedPlan.split('\n')
+        .filter(line => line.trim().startsWith('- ') || line.trim().startsWith('* '))
+        .map(line => line.replace(/^[-*]\s*/, '').trim())
+        .filter(text => text.length > 5 && text.length < 100);
+
+      if (taskLines.length > 0) {
+        const taskObjects = taskLines.slice(0, 15).map(title => ({
+          userId: req.user.userId,
+          title,
+          status: 'Todo',
+          priority: 'Medium'
+        }));
+        await Task.insertMany(taskObjects);
+        console.log(`✅ Seeded ${taskObjects.length} tasks from study plan`);
+      }
+    } catch (taskErr) {
+      console.error('Failed to seed tasks from study plan:', taskErr.message);
+    }
 
     res.status(201).json({ success: true, data: plan });
   } catch (err) {

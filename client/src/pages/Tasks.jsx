@@ -253,60 +253,76 @@ export default function Tasks() {
       {/* Modal */}
       {modal && (
         <div className="fixed inset-0 bg-navy/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in" onClick={() => setModal(false)}>
-          <div className="bg-surface-container-lowest rounded-[2.5rem] w-full max-w-lg p-10 shadow-2xl border border-outline-variant/30 relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setModal(false)} className="absolute top-8 right-8 w-10 h-10 flex items-center justify-center bg-surface-container hover:bg-surface-container-high rounded-full transition-colors">
-              <span className="material-symbols-outlined text-on-surface-variant">close</span>
+          <div className="bg-white/90 backdrop-blur-2xl rounded-[2.5rem] w-full max-w-lg p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)] border border-white/50 relative max-h-[92vh] overflow-y-auto custom-scrollbar animate-scale-in" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setModal(false)} className="absolute top-8 right-8 w-11 h-11 flex items-center justify-center bg-surface-container/50 hover:bg-primary hover:text-white rounded-2xl transition-all duration-300 hover:rotate-90 active:scale-90 group shadow-sm">
+              <span className="material-symbols-outlined text-on-surface-variant group-hover:text-white transition-colors">close</span>
             </button>
             
-            <div className="mb-8">
-              <h3 className="font-headline text-2xl font-extrabold text-on-surface">{editingTask ? 'Refine Task' : 'New Strategic Task'}</h3>
-              <p className="text-on-surface-variant text-sm mt-1">Define the parameters of your current initiative.</p>
+            <div className="mb-10 pr-12">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="h-1.5 w-10 bg-primary rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70">Intelligence Module</span>
+              </div>
+              <h3 className="font-headline text-3xl font-black text-on-surface tracking-tight leading-[1.1]">{editingTask ? 'Refine Initiative' : 'Initialize Strategic Task'}</h3>
+              <p className="text-on-surface-variant/70 text-sm font-medium mt-2 leading-relaxed">Shape the trajectory of your current project with precision.</p>
             </div>
 
             <form onSubmit={handleSave} className="space-y-6">
-              <div className="space-y-2">
-                <label className="text-xs font-black text-on-surface-variant uppercase tracking-widest ml-1">Task Identification</label>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between mb-1 px-1">
+                  <label className="text-[11px] font-black text-on-surface/40 uppercase tracking-[0.1em]">Identification</label>
+                  <span className="text-[10px] font-bold text-primary/40">Core Parameter</span>
+                </div>
                 <input value={form.title} onChange={(e) => setForm({...form, title: e.target.value})}
-                  className="w-full px-5 py-4 bg-surface-container-low border-none rounded-2xl focus:ring-2 focus:ring-primary/20 outline-none text-sm font-bold placeholder:opacity-40" maxLength={100} placeholder="What needs to be accomplished?" />
+                  className="w-full px-6 py-4.5 bg-surface-container-low/50 border border-outline-variant/10 rounded-2xl focus:ring-2 focus:ring-primary/10 transition-all outline-none text-sm font-bold placeholder:opacity-20 hover:shadow-md hover:shadow-primary/5 focus:bg-white focus:shadow-xl focus:shadow-primary/5 border-b-2 focus:border-b-primary" maxLength={100} placeholder="Define the primary objective..." />
               </div>
               
-              <div className="space-y-2">
-                <label className="text-xs font-black text-on-surface-variant uppercase tracking-widest ml-1">Contextual Details</label>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between mb-1 px-1">
+                  <label className="text-[11px] font-black text-on-surface/40 uppercase tracking-[0.1em]">Substance & Context</label>
+                </div>
                 <textarea value={form.description} onChange={(e) => setForm({...form, description: e.target.value})}
-                  className="w-full px-5 py-4 bg-surface-container-low border-none rounded-2xl focus:ring-2 focus:ring-primary/20 outline-none resize-none text-sm font-medium h-24 placeholder:opacity-40" maxLength={500} placeholder="Outline any relevant information or sub-tasks..." />
+                  className="w-full px-6 py-5 bg-surface-container-low/50 border border-outline-variant/10 rounded-[1.5rem] focus:ring-2 focus:ring-primary/10 transition-all outline-none resize-none text-sm font-semibold h-32 placeholder:opacity-20 hover:shadow-md hover:shadow-primary/5 focus:bg-white focus:shadow-xl focus:shadow-primary/5 border-b-2 focus:border-b-primary" maxLength={500} placeholder="Detail the necessary steps and variables involved..." />
               </div>
 
-              <div className="grid grid-cols-2 gap-5">
-                <div className="space-y-2">
-                  <label className="text-xs font-black text-on-surface-variant uppercase tracking-widest ml-1">Target Date</label>
-                  <input type="date" value={form.dueDate} onChange={(e) => setForm({...form, dueDate: e.target.value})}
-                    className="w-full px-5 py-3.5 bg-surface-container-low border-none rounded-2xl focus:ring-2 focus:ring-primary/20 outline-none text-sm font-bold" />
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <label className="text-[11px] font-black text-on-surface/40 uppercase tracking-[0.1em] ml-1">Target Epoch</label>
+                  <div className="relative">
+                    <input type="date" value={form.dueDate} onChange={(e) => setForm({...form, dueDate: e.target.value})}
+                      className="w-full px-6 py-4 bg-surface-container-low/50 border border-outline-variant/10 rounded-2xl focus:ring-2 focus:ring-primary/10 transition-all outline-none text-sm font-bold hover:shadow-md focus:bg-white active:scale-[0.99]" />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-black text-on-surface-variant uppercase tracking-widest ml-1">Criticality</label>
-                  <select value={form.priority} onChange={(e) => setForm({...form, priority: e.target.value})}
-                    className="w-full px-5 py-3.5 bg-surface-container-low border-none rounded-2xl focus:ring-2 focus:ring-primary/20 outline-none text-sm font-bold appearance-none">
-                    {PRIORITIES.map((p) => <option key={p} value={p}>{p}</option>)}
-                  </select>
+                <div className="space-y-3">
+                  <label className="text-[11px] font-black text-on-surface/40 uppercase tracking-[0.1em] ml-1">Urgency Matrix</label>
+                  <div className="relative group">
+                    <select value={form.priority} onChange={(e) => setForm({...form, priority: e.target.value})}
+                      className="w-full px-6 py-4 bg-surface-container-low/50 border border-outline-variant/10 rounded-2xl focus:ring-2 focus:ring-primary/10 transition-all outline-none text-sm font-black appearance-none hover:shadow-md focus:bg-white cursor-pointer pr-12 active:scale-[0.99] uppercase tracking-wider">
+                      {PRIORITIES.map((p) => <option key={p} value={p}>{p}</option>)}
+                    </select>
+                    <span className="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-primary transition-transform group-hover:translate-y-[2px]">expand_more</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-black text-on-surface-variant uppercase tracking-widest ml-1">Current Modality</label>
-                <div className="flex gap-2 p-1 bg-surface-container rounded-2xl">
+              <div className="space-y-4">
+                <label className="text-[11px] font-black text-on-surface/40 uppercase tracking-[0.1em] ml-1">Modal Trajectory</label>
+                <div className="flex gap-2.5 p-2 bg-surface-container/50 backdrop-blur-sm rounded-[1.4rem] border border-outline-variant/20 shadow-inner">
                   {STATUSES.map((s) => (
                     <button key={s} type="button" onClick={() => setForm({...form, status: s})}
-                      className={`flex-1 py-3.5 rounded-xl text-xs font-bold transition-all ${form.status === s ? 'bg-white text-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}>
-                      {s}
+                      className={`flex-1 py-3.5 rounded-xl text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 relative overflow-hidden group shadow-sm ${form.status === s ? 'bg-primary text-white shadow-xl shadow-primary/25 scale-[1.03] z-10' : 'text-on-surface-variant hover:text-on-surface hover:bg-white hover:shadow-md'}`}>
+                      {form.status === s && <span className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none" />}
+                      <span className="relative z-10">{s}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="flex gap-4 pt-4">
+              <div className="pt-8">
                 <button type="submit"
-                  className="flex-1 py-4 bg-primary hover:bg-primary-dark text-white rounded-2xl text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
-                  {editingTask ? 'Update Strategy' : 'Initialize Task'}
+                  className="w-full py-5 bg-gradient-to-tr from-primary to-[#4F46E5] hover:to-primary text-white rounded-2xl text-[12px] font-black uppercase tracking-[0.25em] shadow-2xl shadow-primary/30 transition-all duration-300 hover:shadow-primary/50 hover:-translate-y-1 active:translate-y-0 active:scale-[0.97] flex items-center justify-center gap-3 active:shadow-inner group">
+                  <span className="material-symbols-outlined text-[1.4rem] transition-transform duration-500 group-hover:rotate-12 group-hover:scale-125">{editingTask ? 'verified_user' : 'rocket_launch'}</span>
+                  <span className="mt-0.5">{editingTask ? 'Finalize Evolution' : 'Deploy Initiative'}</span>
                 </button>
               </div>
             </form>

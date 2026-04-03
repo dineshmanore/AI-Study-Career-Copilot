@@ -13,7 +13,7 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       // Don't redirect if already on auth pages
       const path = window.location.pathname;
-      if (path !== '/login' && path !== '/register') {
+      if (path !== '/login' && path !== '/register' && path !== '/dashboard') {
         window.location.href = '/login';
       }
     }
