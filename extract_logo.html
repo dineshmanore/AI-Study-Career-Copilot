@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <img id="logo" src="file:///C:/Users/Admin/.gemini/antigravity/brain/b2b07a13-17b9-4174-9208-3493aca315d7/scholarly_edge_logo_v1_1775205167343.png" style="display:none">
+  <canvas id="canvas"></canvas>
+  <div id="output"></div>
+  <script>
+    const img = document.getElementById('logo');
+    img.onload = function() {
+      const canvas = document.getElementById('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const base64 = canvas.toDataURL('image/png');
+      document.getElementById('output').innerText = base64;
+      console.log("BASE64_COMPLETE");
+    };
+  </script>
+</body>
+</html>

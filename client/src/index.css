@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #F2F4F6;
+  color: #191c1e;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Premium Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #737686; }
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse-dot {
+  0%, 80%, 100% { transform: scale(0); }
+  40%           { transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-in  { animation: fadeIn 0.35s ease-out; }
+.animate-slide-in { animation: slideIn 0.3s ease-out; }
+
+/* ── Loading Dots (Chat) ── */
+.loading-dots span {
+  display: inline-block;
+  width: 7px; height: 7px;
+  margin: 0 2px;
+  border-radius: 50%;
+  background: #94A3B8;
+  animation: pulse-dot 1.4s infinite ease-in-out both;
+}
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+/* ── Material Symbol overrides ── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 1.25rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ── Prose / Markdown styles ── */
+.markdown-render h1 { font-size: 1.2rem;  font-weight: 800; color: #1E3A5F; margin-top: 1.5rem; margin-bottom: 0.5rem; border-bottom: 2px solid #e0e3e5; padding-bottom: 0.25rem; }
+.markdown-render h2 { font-size: 1.05rem; font-weight: 700; color: #1E3A5F; margin-top: 1.25rem; margin-bottom: 0.4rem; }
+.markdown-render h3 { font-size: 0.95rem; font-weight: 700; color: #1E3A5F; margin-top: 1rem; margin-bottom: 0.3rem; }
+.markdown-render p  { font-size: 0.875rem; line-height: 1.7; margin-bottom: 0.5rem; }
+.markdown-render strong { font-weight: 700; color: #1E3A5F; }
