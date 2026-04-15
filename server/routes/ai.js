@@ -8,14 +8,32 @@ const Chat      = require('../models/Chat');
 const Resume    = require('../models/Resume');
 const Task      = require('../models/Task');
 
-// Model Config (Free Qwen - stable)
-const FAST_MODEL = 'qwen/qwen3.6-plus:free';
+// Model Config (Free auto - stable)
+const FAST_MODEL = 'openrouter/free';
 
 // Helpers
 const safeParseJSON = (text) => {
   try {
-    const cleanText = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
-    return JSON.parse(cleanText);
+    // 1. Remove markdown code blocks if present
+    let cleanText = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+    
+    // 2. Try direct parse
+    try { return JSON.parse(cleanText); } catch {}
+
+    // 3. Try to extract JSON between { } or [ ]
+    const startBracket = cleanText.indexOf('{');
+    const startSquare = cleanText.indexOf('[');
+    const endBracket = cleanText.lastIndexOf('}');
+    const endSquare = cleanText.lastIndexOf(']');
+
+    let jsonStr = '';
+    if (startBracket !== -1 && endBracket !== -1 && (startSquare === -1 || startBracket < startSquare)) {
+      jsonStr = cleanText.substring(startBracket, endBracket + 1);
+    } else if (startSquare !== -1 && endSquare !== -1) {
+      jsonStr = cleanText.substring(startSquare, endSquare + 1);
+    }
+
+    return jsonStr ? JSON.parse(jsonStr) : null;
   } catch {
     return null;
   }
@@ -285,6 +303,26 @@ User Answer: ${userAnswer}`;
     res.json({ success: true, data: evaluation });
   } catch (err) {
     res.status(500).json({ success: false, message: 'AI error: ' + err.message });
+  }
+});
+
+// ─── POST /api/ai/enhance-resume-field ────────────────────────────────────────
+router.post('/enhance-resume-field', verify, async (req, res) => {
+  const { fieldType, content } = req.body;
+  if (!fieldType || !content) return res.status(400).json({ success: false, message: 'Field type and content are required' });
+
+  try {
+    const prompt = `You are a professional resume writer. Rewrite and enhance the following ${fieldType} to be more professional, impact-driven, and concise. Use strong action verbs.
+    
+    Original Content: ${content}
+    
+    Return ONLY the enhanced text (no explanations or preambles).`;
+
+    const enhancedContent = await generateResponse(prompt, "You are a professional career coach. Respond ONLY with the rewritten text.", FAST_MODEL);
+
+    res.json({ success: true, data: { enhancedContent } });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'AI enhancement failed: ' + err.message });
   }
 });
 

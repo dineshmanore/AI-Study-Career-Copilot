@@ -12,7 +12,7 @@ const openai = new OpenAI({
 /**
  * Standard text generation helper for OpenRouter
  */
-const generateResponse = async (prompt, systemPrompt = '', model = 'qwen/qwen3.6-plus:free') => {
+const generateResponse = async (prompt, systemPrompt = '', model = 'openrouter/free') => {
   try {
     const response = await openai.chat.completions.create({
       model,
